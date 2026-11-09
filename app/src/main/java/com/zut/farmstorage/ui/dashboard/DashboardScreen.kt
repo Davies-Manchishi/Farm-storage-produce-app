@@ -17,7 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.zut.farmstorage.data.ProduceRepository
 
@@ -39,7 +38,6 @@ fun DashboardScreen(
         Text("Farm Produce Storage", style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.primary)
         Text("Welcome back", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.secondary)
 
-        // Updated cards to use the farming theme colors
         Card(
             modifier = Modifier.fillMaxWidth(),
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
@@ -62,20 +60,18 @@ fun DashboardScreen(
 
         Spacer(Modifier.height(8.dp))
 
-        // Disabled buttons are clearer now with the new theme
-        Button(onClick = onAddProduce, enabled = false, modifier = Modifier.fillMaxWidth()) {
-            Text("Add Produce (coming soon)")
+        Button(onClick = onAddProduce, modifier = Modifier.fillMaxWidth()) {
+            Text("Add Produce")
         }
-        OutlinedButton(onClick = onViewRecords, enabled = false, modifier = Modifier.fillMaxWidth()) {
-            Text("Storage Records (coming soon)")
+        OutlinedButton(onClick = onViewRecords, modifier = Modifier.fillMaxWidth()) {
+            Text("Storage Records")
         }
-        OutlinedButton(onClick = onViewMonitoring, enabled = false, modifier = Modifier.fillMaxWidth()) {
-            Text("Storage Monitoring (coming soon)")
+        OutlinedButton(onClick = onViewMonitoring, modifier = Modifier.fillMaxWidth()) {
+            Text("Storage Monitoring")
         }
 
         if (records.isEmpty()) {
             Spacer(Modifier.height(16.dp))
-            // FORCED DARK COLOR SO IT IS ALWAYS VISIBLE
             Text(
                 text = "No produce registered yet. Tap 'Add Produce' to begin.",
                 style = MaterialTheme.typography.bodyLarge,
