@@ -1,23 +1,9 @@
 package com.zut.farmstorage.ui.dashboard
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.zut.farmstorage.data.ProduceRepository
 
@@ -39,48 +25,29 @@ fun DashboardScreen(
         Text("Farm Produce Storage", style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.primary)
         Text("Welcome back", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.secondary)
 
-        // Updated cards to use the farming theme colors
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
-        ) {
+        Card(modifier = Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)) {
             Column(modifier = Modifier.padding(16.dp)) {
-                Text("Records", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                Text(totalRecords.toString(), style = MaterialTheme.typography.headlineLarge, color = MaterialTheme.colorScheme.secondary)
+                Text("Records", style = MaterialTheme.typography.labelMedium)
+                Text(totalRecords.toString(), style = MaterialTheme.typography.headlineLarge)
             }
         }
 
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
-        ) {
+        Card(modifier = Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)) {
             Column(modifier = Modifier.padding(16.dp)) {
-                Text("Remaining stock", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                Text("%.2f".format(totalRemaining), style = MaterialTheme.typography.headlineLarge, color = MaterialTheme.colorScheme.secondary)
+                Text("Remaining stock", style = MaterialTheme.typography.labelMedium)
+                Text("%.2f".format(totalRemaining), style = MaterialTheme.typography.headlineLarge)
             }
         }
 
         Spacer(Modifier.height(8.dp))
 
-        // Disabled buttons are clearer now with the new theme
-        Button(onClick = onAddProduce, enabled = true, modifier = Modifier.fillMaxWidth()) {
-            Text("Add Produce ")
-        }
-        OutlinedButton(onClick = onViewRecords, enabled = true, modifier = Modifier.fillMaxWidth()) {
-            Text("Storage Records ")
-        }
-        OutlinedButton(onClick = onViewMonitoring, enabled = true, modifier = Modifier.fillMaxWidth()) {
-            Text("Storage Monitoring ")
-        }
+        Button(onClick = onAddProduce, modifier = Modifier.fillMaxWidth()) { Text("Add Produce") }
+        OutlinedButton(onClick = onViewRecords, modifier = Modifier.fillMaxWidth()) { Text("Storage Records") }
+        OutlinedButton(onClick = onViewMonitoring, modifier = Modifier.fillMaxWidth()) { Text("Storage Monitoring") }
 
         if (records.isEmpty()) {
             Spacer(Modifier.height(16.dp))
-            // FORCED DARK COLOR SO IT IS ALWAYS VISIBLE
-            Text(
-                text = "No produce registered yet. Tap 'Add Produce' to begin.",
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onBackground
-            )
+            Text("No produce registered yet. Tap 'Add Produce' to begin.", style = MaterialTheme.typography.bodyLarge)
         }
     }
 }
