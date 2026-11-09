@@ -17,10 +17,14 @@ import com.zut.farmstorage.ui.addproduce.AddProduceScreen
 import com.zut.farmstorage.ui.dashboard.DashboardScreen
 import com.zut.farmstorage.ui.details.ProduceDetailsScreen
 import kotlinx.coroutines.launch
+<<<<<<< HEAD
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+=======
+import com.zut.farmstorage.ui.monitoring.MonitoringScreen
+>>>>>>> 4fb6a40 (Add produce inspection monitoring and notifications)
 @Composable
 fun AppNavHost(
     repository: ProduceRepository,
@@ -98,6 +102,7 @@ fun AppNavHost(
                     type = NavType.LongType
                 }
             )
+<<<<<<< HEAD
         ) { backStackEntry ->
 
             val produceId = backStackEntry.arguments?.getLong("produceId")
@@ -153,6 +158,15 @@ fun AppNavHost(
                     )
                 }
             }
+=======
+        }
+
+        composable(Routes.MONITORING) {
+            MonitoringScreen(
+                repository = repository,
+                onBack = { navController.popBackStack() }
+            )
+>>>>>>> 4fb6a40 (Add produce inspection monitoring and notifications)
         }
     }
 }

@@ -9,3 +9,4 @@ object Routes {
 
     fun details(id: Long) = "details/$id"
 }
+
