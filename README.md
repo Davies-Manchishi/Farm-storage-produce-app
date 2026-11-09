@@ -92,6 +92,12 @@ app/src/main/java/com/zut/farmstorage/
 └── worker/ ← MEMBER 4
 └── InspectionWorker.kt (WorkManager Worker + notification logic)
 
+Project Team Members
+1. Tatenda Mungandaire -2420986
+2. Tafadzwa Mungandaire- 2420974
+3. Davies Manchishi 2410093
+4. David Chisenga - 2410384
+
 
 ### Who Creates What
 
