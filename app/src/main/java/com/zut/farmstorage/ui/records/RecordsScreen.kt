@@ -27,7 +27,8 @@ import java.util.Locale
 @Composable
 fun RecordsScreen(
     repository: ProduceRepository,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onItemClick: (Long) -> Unit
 ) {
     val produceList by repository.getAll()
         .collectAsState(initial = emptyList())
@@ -52,7 +53,7 @@ fun RecordsScreen(
         }
 
         if (produceList.isEmpty()) {
-            Text("No produce records yet. Add produce to see them here.")
+            Text("No produce com.zut.farmstorage.ui.records yet. Add produce to see them here.")
         } else {
             LazyColumn(
                 contentPadding = PaddingValues(vertical = 8.dp),
