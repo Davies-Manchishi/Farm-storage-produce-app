@@ -4,9 +4,9 @@ FARM PRODUCE STORAGE MANAGER
 
 Project Type: Android Mobile Application
 Institution: Zambia University College of Technology
-Programme: [Insert Programme Name]
-Course: [Insert Course Name]
-Project Team: [Insert Group Name]
+Programme: Bachelor of Software Enginnering
+Course: Mobile App Development
+Project Team: FarmStorage
 Date: November 2026
 
 ---
