@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.7.0" type="incidents">
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.core:core-ktx than 1.13.1 is available: 1.19.1">
+        <fix-replace
+            description="Change to 1.19.1"
+            family="Update versions"
+            oldString="1.13.1"
+            replacement="1.19.1"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="27"
+            column="20"
+            startOffset="614"
+            endLine="27"
+            endColumn="51"
+            endOffset="645"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.activity:activity-compose than 1.9.2 is available: 1.13.0">
+        <fix-replace
+            description="Change to 1.13.0"
+            family="Update versions"
+            oldString="1.9.2"
+            replacement="1.13.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="28"
+            column="20"
+            startOffset="666"
+            endLine="28"
+            endColumn="62"
+            endOffset="708"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.compose:compose-bom than 2024.09.03 is available: 2026.09.00">
+        <fix-replace
+            description="Change to 2026.09.00"
+            family="Update versions"
+            oldString="2024.09.03"
+            replacement="2026.09.00"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="29"
+            column="20"
+            startOffset="729"
+            endLine="29"
+            endColumn="71"
+            endOffset="780"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.navigation:navigation-compose than 2.8.4 is available: 2.10.2">
+        <fix-replace
+            description="Change to 2.10.2"
+            family="Update versions"
+            oldString="2.8.4"
+            replacement="2.10.2"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="34"
+            column="20"
+            startOffset="1020"
+            endLine="34"
+            endColumn="66"
+            endOffset="1066"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.room:room-runtime than 2.6.1 is available: 2.8.5">
+        <fix-replace
+            description="Change to 2.8.5"
+            family="Update versions"
+            oldString="2.6.1"
+            replacement="2.8.5"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="35"
+            column="20"
+            startOffset="1087"
+            endLine="35"
+            endColumn="54"
+            endOffset="1121"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.room:room-ktx than 2.6.1 is available: 2.8.5">
+        <fix-replace
+            description="Change to 2.8.5"
+            family="Update versions"
+            oldString="2.6.1"
+            replacement="2.8.5"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="36"
+            column="20"
+            startOffset="1142"
+            endLine="36"
+            endColumn="50"
+            endOffset="1172"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.work:work-runtime-ktx than 2.9.1 is available: 2.12.0">
+        <fix-replace
+            description="Change to 2.12.0"
+            family="Update versions"
+            oldString="2.9.1"
+            replacement="2.12.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="37"
+            column="20"
+            startOffset="1193"
+            endLine="37"
+            endColumn="58"
+            endOffset="1231"/>
+    </incident>
+
+</incidents>

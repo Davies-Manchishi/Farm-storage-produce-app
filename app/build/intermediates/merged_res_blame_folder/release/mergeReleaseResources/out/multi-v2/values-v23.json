@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.zut.farmstorage.app-mergeReleaseResources-57:/values-v23/values-v23.xml",
+            "map": [
+                {
+                    "source": "/home/davies/.gradle/caches/9.6.0/transforms/9b19cddeedc70aaeddf38defb69b74e4/transformed/work-runtime-2.9.1/res/values-v23/values-v23.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,121",
+                        "endColumns": "65,62",
+                        "endOffsets": "116,179"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.7.0">
+
+    <issue
+        id="ObsoleteLintCustomCheck"
+        severity="Warning"
+        message="Library lint checks out of date;&#xA;these checks **will be skipped**!&#xA;&#xA;Lint found an issue registry (`androidx.navigation.common.lint.NavigationCommonIssueRegistry`)&#xA;which was compiled against an older version of lint&#xA;than this one. This is usually fine, but not in this&#xA;case; some basic verification shows that the lint&#xA;check jar references (for example) the following API&#xA;which is no longer valid in this version of lint:&#xA;org.jetbrains.kotlin.analysis.api.lifetime.KaDefaultLifetimeTokenProvider#Companion&#xA;(Referenced from androidx/navigation/lint/UtilKt.class)&#xA;&#xA;Therefore, this lint check library is **not** included&#xA;in analysis. This affects the following lint checks:&#xA;`EmptyNavDeepLink`,`WrongStartDestinationType`,`MissingSerializableAnnotation`,`MissingKeepAnnotation`&#xA;&#xA;Recompile the checks against the latest version, or if&#xA;this is a check bundled with a third-party library, see&#xA;if there is a more recent version available.&#xA;&#xA;Version of Lint API this lint check is using is 14.&#xA;The Lint API version currently running is 16 (8.7+)."
+        category="Lint"
+        priority="10"
+        summary="Obsolete custom lint check"
+        explanation="Lint can be extended with &quot;custom checks&quot;: additional checks implemented by developers and libraries to for example enforce specific API usages required by a library or a company coding style guideline.&#xA;&#xA;The Lint APIs are not yet stable, so these checks may either cause a performance degradation, or stop working, or provide wrong results.&#xA;&#xA;This warning flags custom lint checks that are found to be using obsolete APIs and will need to be updated to run in the current lint environment.&#xA;&#xA;It may also flag issues found to be using a **newer** version of the API, meaning that you need to use a newer version of lint (or Android Studio or Gradle plugin etc) to work with these checks.">
+        <location
+            file="/home/davies/AndroidStudioProjects/FarmStorage/app/build/intermediates/lint-cache/lintReportDebug/migrated-jars/androidx.navigation.common.lint.NavigationCommonIssueRegistry-5daa12651be0734e..jar"/>
+    </issue>
+
+    <issue
+        id="ObsoleteLintCustomCheck"
+        severity="Warning"
+        message="Library lint checks out of date;&#xA;these checks **will be skipped**!&#xA;&#xA;Lint found an issue registry (`androidx.navigation.compose.lint.NavigationComposeIssueRegistry`)&#xA;which was compiled against an older version of lint&#xA;than this one. This is usually fine, but not in this&#xA;case; some basic verification shows that the lint&#xA;check jar references (for example) the following API&#xA;which is no longer valid in this version of lint:&#xA;org.jetbrains.kotlin.analysis.api.lifetime.KaDefaultLifetimeTokenProvider#Companion&#xA;(Referenced from androidx/navigation/lint/UtilKt.class)&#xA;&#xA;Therefore, this lint check library is **not** included&#xA;in analysis. This affects the following lint checks:&#xA;`ComposableDestinationInComposeScope`&#xA;`ComposableNavGraphInComposeScope`&#xA;`UnrememberedGetBackStackEntry`&#xA;`WrongStartDestinationType`&#xA;`MissingKeepAnnotation`&#xA;`MissingSerializableAnnotation`&#xA;&#xA;Recompile the checks against the latest version, or if&#xA;this is a check bundled with a third-party library, see&#xA;if there is a more recent version available.&#xA;&#xA;Version of Lint API this lint check is using is 14.&#xA;The Lint API version currently running is 16 (8.7+)."
+        category="Lint"
+        priority="10"
+        summary="Obsolete custom lint check"
+        explanation="Lint can be extended with &quot;custom checks&quot;: additional checks implemented by developers and libraries to for example enforce specific API usages required by a library or a company coding style guideline.&#xA;&#xA;The Lint APIs are not yet stable, so these checks may either cause a performance degradation, or stop working, or provide wrong results.&#xA;&#xA;This warning flags custom lint checks that are found to be using obsolete APIs and will need to be updated to run in the current lint environment.&#xA;&#xA;It may also flag issues found to be using a **newer** version of the API, meaning that you need to use a newer version of lint (or Android Studio or Gradle plugin etc) to work with these checks.">
+        <location
+            file="/home/davies/AndroidStudioProjects/FarmStorage/app/build/intermediates/lint-cache/lintReportDebug/migrated-jars/androidx.navigation.compose.lint.NavigationComposeIssueRegistry-598b224f0ce2f9f2..jar"/>
+    </issue>
+
+    <issue
+        id="ObsoleteLintCustomCheck"
+        severity="Warning"
+        message="Library lint checks out of date;&#xA;these checks **will be skipped**!&#xA;&#xA;Lint found an issue registry (`androidx.navigation.runtime.lint.NavigationRuntimeIssueRegistry`)&#xA;which was compiled against an older version of lint&#xA;than this one. This is usually fine, but not in this&#xA;case; some basic verification shows that the lint&#xA;check jar references (for example) the following API&#xA;which is no longer valid in this version of lint:&#xA;org.jetbrains.kotlin.analysis.api.lifetime.KaDefaultLifetimeTokenProvider#Companion&#xA;(Referenced from androidx/navigation/lint/UtilKt.class)&#xA;&#xA;Therefore, this lint check library is **not** included&#xA;in analysis. This affects the following lint checks:&#xA;`DeepLinkInActivityDestination`,`WrongStartDestinationType`,`WrongNavigateRouteType`,`MissingKeepAnnotation`,`MissingSerializableAnnotation`&#xA;&#xA;Recompile the checks against the latest version, or if&#xA;this is a check bundled with a third-party library, see&#xA;if there is a more recent version available.&#xA;&#xA;Version of Lint API this lint check is using is 14.&#xA;The Lint API version currently running is 16 (8.7+)."
+        category="Lint"
+        priority="10"
+        summary="Obsolete custom lint check"
+        explanation="Lint can be extended with &quot;custom checks&quot;: additional checks implemented by developers and libraries to for example enforce specific API usages required by a library or a company coding style guideline.&#xA;&#xA;The Lint APIs are not yet stable, so these checks may either cause a performance degradation, or stop working, or provide wrong results.&#xA;&#xA;This warning flags custom lint checks that are found to be using obsolete APIs and will need to be updated to run in the current lint environment.&#xA;&#xA;It may also flag issues found to be using a **newer** version of the API, meaning that you need to use a newer version of lint (or Android Studio or Gradle plugin etc) to work with these checks.">
+        <location
+            file="/home/davies/AndroidStudioProjects/FarmStorage/app/build/intermediates/lint-cache/lintReportDebug/migrated-jars/androidx.navigation.runtime.lint.NavigationRuntimeIssueRegistry-a8fea42aedb9bdb3..jar"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.core:core-ktx than 1.13.1 is available: 1.19.1"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="    implementation(&quot;androidx.core:core-ktx:1.13.1&quot;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/davies/AndroidStudioProjects/FarmStorage/app/build.gradle.kts"
+            line="27"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.activity:activity-compose than 1.9.2 is available: 1.13.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="    implementation(&quot;androidx.activity:activity-compose:1.9.2&quot;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/davies/AndroidStudioProjects/FarmStorage/app/build.gradle.kts"
+            line="28"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.compose:compose-bom than 2024.09.03 is available: 2026.09.00"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="    implementation(platform(&quot;androidx.compose:compose-bom:2024.09.03&quot;))"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/davies/AndroidStudioProjects/FarmStorage/app/build.gradle.kts"
+            line="29"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.navigation:navigation-compose than 2.8.4 is available: 2.10.2"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="    implementation(&quot;androidx.navigation:navigation-compose:2.8.4&quot;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/davies/AndroidStudioProjects/FarmStorage/app/build.gradle.kts"
+            line="34"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.room:room-runtime than 2.6.1 is available: 2.8.5"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="    implementation(&quot;androidx.room:room-runtime:2.6.1&quot;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/davies/AndroidStudioProjects/FarmStorage/app/build.gradle.kts"
+            line="35"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.room:room-ktx than 2.6.1 is available: 2.8.5"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="    implementation(&quot;androidx.room:room-ktx:2.6.1&quot;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/davies/AndroidStudioProjects/FarmStorage/app/build.gradle.kts"
+            line="36"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.work:work-runtime-ktx than 2.9.1 is available: 2.12.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="    implementation(&quot;androidx.work:work-runtime-ktx:2.9.1&quot;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/davies/AndroidStudioProjects/FarmStorage/app/build.gradle.kts"
+            line="37"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="MissingApplicationIcon"
+        severity="Warning"
+        message="Should explicitly set `android:icon`, there is no default"
+        category="Usability:Icons"
+        priority="5"
+        summary="Missing application icon"
+        explanation="You should set an icon for the application as whole because there is no default. This attribute must be set as a reference to a drawable resource containing the image (for example `@drawable/icon`)."
+        url="https://developer.android.com/studio/publish/preparing#publishing-configure"
+        urls="https://developer.android.com/studio/publish/preparing#publishing-configure"
+        errorLine1="    &lt;application"
+        errorLine2="     ~~~~~~~~~~~">
+        <location
+            file="/home/davies/AndroidStudioProjects/FarmStorage/app/src/main/AndroidManifest.xml"
+            line="6"
+            column="6"/>
+    </issue>
+
+</issues>
