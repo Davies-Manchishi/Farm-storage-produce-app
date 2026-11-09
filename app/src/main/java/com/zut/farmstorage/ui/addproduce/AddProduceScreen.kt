@@ -3,12 +3,14 @@ package com.zut.farmstorage.ui.addproduce
 import android.app.DatePickerDialog
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -27,43 +29,18 @@ fun AddProduceScreen(
     ) -> Unit = { _, _, _, _, _, _ -> }
 ) {
 
-    var cropName by rememberSaveable {
-        mutableStateOf("")
-    }
-
-    var quantity by rememberSaveable {
-        mutableStateOf("")
-    }
-
-    var unit by rememberSaveable {
-        mutableStateOf("kg")
-    }
-
-    var storageLocation by rememberSaveable {
-        mutableStateOf("")
-    }
-
-    var notes by rememberSaveable {
-        mutableStateOf("")
-    }
-
-    var harvestDate by rememberSaveable {
-        mutableLongStateOf(System.currentTimeMillis())
-    }
-
-    var errorMessage by rememberSaveable {
-        mutableStateOf("")
-    }
-
-    var showUnitMenu by remember {
-        mutableStateOf(false)
-    }
+    var cropName by rememberSaveable { mutableStateOf("") }
+    var quantity by rememberSaveable { mutableStateOf("") }
+    var unit by rememberSaveable { mutableStateOf("kg") }
+    var storageLocation by rememberSaveable { mutableStateOf("") }
+    var notes by rememberSaveable { mutableStateOf("") }
+    var harvestDate by rememberSaveable { mutableLongStateOf(System.currentTimeMillis()) }
+    var errorMessage by rememberSaveable { mutableStateOf("") }
+    var showUnitMenu by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
 
-    val calendar = remember {
-        Calendar.getInstance()
-    }
+    val calendar = remember { Calendar.getInstance() }
 
     val dateFormatter = remember {
         SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -85,19 +62,28 @@ fun AddProduceScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .statusBarsPadding()
+            .navigationBarsPadding()
+            .imePadding()
             .verticalScroll(rememberScrollState())
-            .padding(20.dp),
-        verticalArrangement = Arrangement.spacedBy(14.dp)
+            .padding(horizontal = 24.dp, vertical = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
 
-        Text(
-            text = "Add Produce",
-            style = MaterialTheme.typography.headlineMedium
-        )
+        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            Text(
+                text = "Add Produce",
+                style = MaterialTheme.typography.headlineMedium,
+                color = MaterialTheme.colorScheme.primary
+            )
+            Text(
+                text = "Register your harvested produce below.",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.secondary
+            )
+        }
 
-        Text(
-            text = "Register your harvested produce below."
-        )
+        Spacer(Modifier.height(4.dp))
 
         OutlinedTextField(
             value = cropName,
@@ -108,56 +94,57 @@ fun AddProduceScreen(
             singleLine = true
         )
 
-        OutlinedTextField(
-            value = quantity,
-            onValueChange = { quantity = it },
-            label = { Text("Quantity") },
-            placeholder = { Text("Enter quantity") },
+        Row(
             modifier = Modifier.fillMaxWidth(),
-            singleLine = true
-        )
-
-        ExposedDropdownMenuBox(
-            expanded = showUnitMenu,
-            onExpandedChange = {
-                showUnitMenu = !showUnitMenu
-            }
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
 
             OutlinedTextField(
-                value = unit,
-                onValueChange = {},
-                readOnly = true,
-                label = { Text("Unit") },
-                trailingIcon = {
-                    ExposedDropdownMenuDefaults.TrailingIcon(
-                        expanded = showUnitMenu
-                    )
-                },
-                modifier = Modifier
-                    .menuAnchor(
-                        ExposedDropdownMenuAnchorType.PrimaryNotEditable,
-                        enabled = true
-                    )
-                    .fillMaxWidth()
+                value = quantity,
+                onValueChange = { quantity = it },
+                label = { Text("Quantity") },
+                placeholder = { Text("0") },
+                modifier = Modifier.weight(1f),
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
             )
 
-            ExposedDropdownMenu(
+            ExposedDropdownMenuBox(
                 expanded = showUnitMenu,
-                onDismissRequest = {
-                    showUnitMenu = false
-                }
+                onExpandedChange = { showUnitMenu = !showUnitMenu },
+                modifier = Modifier.weight(1f)
             ) {
 
-                listOf("kg", "bags", "tonnes").forEach { option ->
+                OutlinedTextField(
+                    value = unit,
+                    onValueChange = {},
+                    readOnly = true,
+                    label = { Text("Unit") },
+                    trailingIcon = {
+                        ExposedDropdownMenuDefaults.TrailingIcon(
+                            expanded = showUnitMenu
+                        )
+                    },
+                    modifier = Modifier
+                        .menuAnchor()
+                        .fillMaxWidth()
+                )
 
-                    DropdownMenuItem(
-                        text = { Text(option) },
-                        onClick = {
-                            unit = option
-                            showUnitMenu = false
-                        }
-                    )
+                ExposedDropdownMenu(
+                    expanded = showUnitMenu,
+                    onDismissRequest = { showUnitMenu = false }
+                ) {
+
+                    listOf("kg", "bags", "tonnes").forEach { option ->
+
+                        DropdownMenuItem(
+                            text = { Text(option) },
+                            onClick = {
+                                unit = option
+                                showUnitMenu = false
+                            }
+                        )
+                    }
                 }
             }
         }
@@ -169,11 +156,7 @@ fun AddProduceScreen(
             label = { Text("Harvest date") },
             modifier = Modifier.fillMaxWidth(),
             trailingIcon = {
-                TextButton(
-                    onClick = {
-                        datePicker.show()
-                    }
-                ) {
+                TextButton(onClick = { datePicker.show() }) {
                     Text("Choose")
                 }
             }
@@ -181,9 +164,7 @@ fun AddProduceScreen(
 
         OutlinedTextField(
             value = storageLocation,
-            onValueChange = {
-                storageLocation = it
-            },
+            onValueChange = { storageLocation = it },
             label = { Text("Storage location") },
             placeholder = { Text("e.g. Store room A") },
             modifier = Modifier.fillMaxWidth(),
@@ -192,9 +173,7 @@ fun AddProduceScreen(
 
         OutlinedTextField(
             value = notes,
-            onValueChange = {
-                notes = it
-            },
+            onValueChange = { notes = it },
             label = { Text("Notes (optional)") },
             modifier = Modifier.fillMaxWidth(),
             minLines = 3
@@ -203,9 +182,12 @@ fun AddProduceScreen(
         if (errorMessage.isNotEmpty()) {
             Text(
                 text = errorMessage,
+                style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.error
             )
         }
+
+        Spacer(Modifier.height(4.dp))
 
         Button(
             onClick = {
@@ -226,11 +208,11 @@ fun AddProduceScreen(
                     else -> ""
                 }
 
-                if (errorMessage.isEmpty()) {
+                if (errorMessage.isEmpty() && enteredQuantity != null) {
 
                     onSave(
                         cropName.trim(),
-                        enteredQuantity!!,
+                        enteredQuantity,
                         unit,
                         harvestDate,
                         storageLocation.trim(),
