@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 fun ProduceDetailsScreen(
     cropName: String = "Maize",
     quantity: Double = 100.0,
+    initialRemainingQuantity: Double = quantity,
     unit: String = "kg",
     harvestDate: String = "08/11/2026",
     storageLocation: String = "Store Room A",

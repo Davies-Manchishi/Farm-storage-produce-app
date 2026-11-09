@@ -135,10 +135,7 @@ fun AddProduceScreen(
                     )
                 },
                 modifier = Modifier
-                    .menuAnchor(
-                        ExposedDropdownMenuAnchorType.PrimaryNotEditable,
-                        enabled = true
-                    )
+                    .menuAnchor()
                     .fillMaxWidth()
             )
 

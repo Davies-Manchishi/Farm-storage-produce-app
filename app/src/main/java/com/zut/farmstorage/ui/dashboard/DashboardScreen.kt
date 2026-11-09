@@ -70,7 +70,7 @@ fun DashboardScreen(
             Text("Storage Records ")
         }
         OutlinedButton(onClick = onViewMonitoring, enabled = true, modifier = Modifier.fillMaxWidth()) {
-            Text("Storage Monitoring ")
+            Text("Storage Monitoring  ")
         }
 
         if (records.isEmpty()) {
