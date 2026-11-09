@@ -20,7 +20,9 @@ import kotlinx.coroutines.launch
 @Composable
 fun AppNavHost(repository: ProduceRepository, navController: NavHostController = rememberNavController()) {
     val scope = rememberCoroutineScope()
+    
     NavHost(navController = navController, startDestination = Routes.DASHBOARD) {
+        
         composable(Routes.DASHBOARD) {
             DashboardScreen(
                 repository = repository,
@@ -29,6 +31,7 @@ fun AppNavHost(repository: ProduceRepository, navController: NavHostController =
                 onViewMonitoring = { navController.navigate(Routes.MONITORING) }
             )
         }
+        
         composable(Routes.ADD_PRODUCE) {
             AddProduceScreen(onSave = { cropName, quantity, unit, date, location, notes ->
                 scope.launch {
@@ -37,14 +40,35 @@ fun AppNavHost(repository: ProduceRepository, navController: NavHostController =
                 navController.popBackStack()
             })
         }
+        
         composable(Routes.RECORDS) {
-            RecordsScreen(repository = repository, onBack = { navController.popBackStack() })
+            RecordsScreen(
+                repository = repository,
+                onBack = { navController.popBackStack() },
+                onItemClick = { id -> navController.navigate(Routes.details(id)) }
+            )
         }
-        composable(Routes.DETAILS) {
-            ProduceDetailsScreen(cropName = "Maize", quantity = 100.0, onBack = { navController.popBackStack() })
+        
+        composable(
+            route = Routes.DETAILS,
+            arguments = listOf(navArgument("produceId") { type = NavType.LongType })
+        ) { backStackEntry ->
+            ProduceDetailsScreen(
+                cropName = "Maize",
+                quantity = 100.0,
+                unit = "kg",
+                harvestDate = "08/11/2026",
+                storageLocation = "Store Room A",
+                notes = "Stored in a dry and cool place",
+                onBack = { navController.popBackStack() }
+            )
         }
+        
         composable(Routes.MONITORING) {
-            MonitoringScreen(onBack = { navController.popBackStack() })
+            MonitoringScreen(
+                repository = repository,
+                onBack = { navController.popBackStack() }
+            )
         }
     }
 }
