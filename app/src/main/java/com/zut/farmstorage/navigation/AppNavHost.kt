@@ -18,7 +18,7 @@ import com.zut.farmstorage.ui.dashboard.DashboardScreen
 import com.zut.farmstorage.ui.details.ProduceDetailsScreen
 import com.zut.farmstorage.ui.records.RecordsScreen
 import kotlinx.coroutines.launch
-
+import com.zut.farmstorage.ui.monitoring.MonitoringScreen
 @Composable
 fun AppNavHost(
     repository: ProduceRepository,
@@ -72,11 +72,12 @@ fun AppNavHost(
                 onBack = { navController.popBackStack() }
             )
         }
-        
+
         composable(Routes.MONITORING) {
-            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Text("Monitoring - Coming Soon (Member 4)")
-            }
+            MonitoringScreen(
+                repository = repository,
+                onBack = { navController.popBackStack() }
+            )
         }
     }
 }
