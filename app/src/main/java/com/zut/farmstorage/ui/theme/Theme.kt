@@ -7,26 +7,26 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
-
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+// We disable dark mode for now so the app always has a bright, readable farming theme
+private val FarmColorScheme = lightColorScheme(
+    primary = FarmGreen,
+    onPrimary = White,
+    secondary = FarmBrown,
+    onSecondary = White,
+    background = OffWhite,
+    onBackground = DarkText,
+    surface = White,
+    onSurface = DarkText,
+    surfaceVariant = FarmBrownLight,
+    onSurfaceVariant = FarmBrown
 )
 
 @Composable
 fun FarmStorageTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = FarmColorScheme,
         typography = Typography,
         content = content
     )

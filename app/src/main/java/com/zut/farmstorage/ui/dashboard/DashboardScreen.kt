@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -16,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.zut.farmstorage.data.ProduceRepository
 
@@ -34,25 +36,33 @@ fun DashboardScreen(
         modifier = Modifier.fillMaxSize().padding(24.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Text("Farm Produce Storage", style = MaterialTheme.typography.headlineMedium)
-        Text("Welcome back", style = MaterialTheme.typography.bodyMedium)
+        Text("Farm Produce Storage", style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.primary)
+        Text("Welcome back", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.secondary)
 
-        Card(modifier = Modifier.fillMaxWidth()) {
+        // Updated cards to use the farming theme colors
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+        ) {
             Column(modifier = Modifier.padding(16.dp)) {
-                Text("Records", style = MaterialTheme.typography.labelMedium)
-                Text(totalRecords.toString(), style = MaterialTheme.typography.headlineLarge)
+                Text("Records", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(totalRecords.toString(), style = MaterialTheme.typography.headlineLarge, color = MaterialTheme.colorScheme.secondary)
             }
         }
 
-        Card(modifier = Modifier.fillMaxWidth()) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+        ) {
             Column(modifier = Modifier.padding(16.dp)) {
-                Text("Remaining stock", style = MaterialTheme.typography.labelMedium)
-                Text("%.2f".format(totalRemaining), style = MaterialTheme.typography.headlineLarge)
+                Text("Remaining stock", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text("%.2f".format(totalRemaining), style = MaterialTheme.typography.headlineLarge, color = MaterialTheme.colorScheme.secondary)
             }
         }
 
         Spacer(Modifier.height(8.dp))
 
+        // Disabled buttons are clearer now with the new theme
         Button(onClick = onAddProduce, enabled = false, modifier = Modifier.fillMaxWidth()) {
             Text("Add Produce (coming soon)")
         }
@@ -65,7 +75,12 @@ fun DashboardScreen(
 
         if (records.isEmpty()) {
             Spacer(Modifier.height(16.dp))
-            Text("No produce registered yet.", style = MaterialTheme.typography.bodySmall)
+            // FORCED DARK COLOR SO IT IS ALWAYS VISIBLE
+            Text(
+                text = "No produce registered yet. Tap 'Add Produce' to begin.",
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onBackground
+            )
         }
     }
 }
