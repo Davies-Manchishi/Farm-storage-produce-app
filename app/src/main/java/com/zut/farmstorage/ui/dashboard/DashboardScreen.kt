@@ -63,14 +63,14 @@ fun DashboardScreen(
         Spacer(Modifier.height(8.dp))
 
         // Disabled buttons are clearer now with the new theme
-        Button(onClick = onAddProduce, enabled = false, modifier = Modifier.fillMaxWidth()) {
-            Text("Add Produce (coming soon)")
+        Button(onClick = onAddProduce, enabled = true, modifier = Modifier.fillMaxWidth()) {
+            Text("Add Produce ")
         }
-        OutlinedButton(onClick = onViewRecords, enabled = false, modifier = Modifier.fillMaxWidth()) {
-            Text("Storage Records (coming soon)")
+        OutlinedButton(onClick = onViewRecords, enabled = true, modifier = Modifier.fillMaxWidth()) {
+            Text("Storage Records ")
         }
-        OutlinedButton(onClick = onViewMonitoring, enabled = false, modifier = Modifier.fillMaxWidth()) {
-            Text("Storage Monitoring (coming soon)")
+        OutlinedButton(onClick = onViewMonitoring, enabled = true, modifier = Modifier.fillMaxWidth()) {
+            Text("Storage Monitoring ")
         }
 
         if (records.isEmpty()) {
