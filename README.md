@@ -121,6 +121,8 @@ Project Team Members
 | `ui/theme/` | Member 1 | Material 3 theme, colors, typography |
 | `worker/InspectionWorker.kt` | Member 4 | WorkManager Worker + notification channel logic |
 
+##Technologies Used- Kotlin,Android Studio,JetpackCompose,Room and WorkManager
+
 ### Rules Everyone Must Follow
 
 1. **Stay in your folder.** Don't create files outside your assigned folder without telling the group — two people editing one file causes merge conflicts.
