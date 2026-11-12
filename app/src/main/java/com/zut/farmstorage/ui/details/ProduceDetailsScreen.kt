@@ -23,8 +23,9 @@ fun ProduceDetailsScreen(
 ) {
 
     var remainingQuantity by rememberSaveable {
-        mutableDoubleStateOf(initialSavedQuantity)
-    }
+      rememberSaveable(initialRemainingQuantity){
+        mutableDoubleStateOf(initialRemainingQuantity)
+      }
 
     var adjustmentQuantity by rememberSaveable {
         mutableStateOf("")

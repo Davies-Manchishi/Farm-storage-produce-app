@@ -16,6 +16,7 @@ import com.zut.farmstorage.data.ProduceRepository
 import com.zut.farmstorage.ui.addproduce.AddProduceScreen
 import com.zut.farmstorage.ui.dashboard.DashboardScreen
 import com.zut.farmstorage.ui.details.ProduceDetailsScreen
+import com.zut.farmstorage.ui.monitoring.MonitoringScreen
 import com.zut.farmstorage.ui.records.RecordsScreen
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -33,6 +34,8 @@ fun AppNavHost(
         navController = navController,
         startDestination = Routes.DASHBOARD
     ) {
+
+        // Dashboard
         composable(Routes.DASHBOARD) {
             DashboardScreen(
                 repository = repository,
@@ -43,11 +46,12 @@ fun AppNavHost(
                     navController.navigate(Routes.RECORDS)
                 },
                 onViewMonitoring = {
-                    // Member 4's screen will be connected later.
+                    navController.navigate(Routes.MONITORING)
                 }
             )
         }
 
+        // Add Produce
         composable(Routes.ADD_PRODUCE) {
             AddProduceScreen(
                 onSave = { cropName, quantity, unit, harvestDate, storageLocation, notes ->
@@ -70,6 +74,7 @@ fun AppNavHost(
             )
         }
 
+        // Storage Records
         composable(Routes.RECORDS) {
             RecordsScreen(
                 repository = repository,
@@ -82,6 +87,7 @@ fun AppNavHost(
             )
         }
 
+        // Produce Details
         composable(
             route = Routes.DETAILS,
             arguments = listOf(
@@ -127,6 +133,16 @@ fun AppNavHost(
             } else {
                 Text("Loading produce details...")
             }
+        }
+
+        // Storage Monitoring
+        composable(Routes.MONITORING) {
+            MonitoringScreen(
+                repository = repository,
+                onBack = {
+                    navController.popBackStack()
+                }
+            )
         }
     }
 }

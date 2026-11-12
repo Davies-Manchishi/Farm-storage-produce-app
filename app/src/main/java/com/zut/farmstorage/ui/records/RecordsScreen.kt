@@ -54,7 +54,7 @@ fun RecordsScreen(
         }
 
         if (produceList.isEmpty()) {
-            Text("No produce com.zut.farmstorage.ui.records yet. Add produce to see them here.")
+            Text("No produce records yet. Add produce to see them here.")
         } else {
             LazyColumn(
                 contentPadding = PaddingValues(vertical = 8.dp),
