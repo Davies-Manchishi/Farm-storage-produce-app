@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 fun ProduceDetailsScreen(
     cropName: String = "Maize",
     quantity: Double = 100.0,
+    initialRemainingQuantity: Double = quantity,
     unit: String = "kg",
     harvestDate: String = "08/11/2026",
     storageLocation: String = "Store Room A",
@@ -22,8 +23,9 @@ fun ProduceDetailsScreen(
 ) {
 
     var remainingQuantity by rememberSaveable {
-        mutableDoubleStateOf(quantity)
-    }
+      rememberSaveable(initialRemainingQuantity){
+        mutableDoubleStateOf(initialRemainingQuantity)
+      }
 
     var adjustmentQuantity by rememberSaveable {
         mutableStateOf("")

@@ -1,6 +1,9 @@
 package com.zut.farmstorage.navigation
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -13,61 +16,132 @@ import com.zut.farmstorage.data.ProduceRepository
 import com.zut.farmstorage.ui.addproduce.AddProduceScreen
 import com.zut.farmstorage.ui.dashboard.DashboardScreen
 import com.zut.farmstorage.ui.details.ProduceDetailsScreen
-import com.zut.farmstorage.ui.records.RecordsScreen
 import com.zut.farmstorage.ui.monitoring.MonitoringScreen
+import com.zut.farmstorage.ui.records.RecordsScreen
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 @Composable
-fun AppNavHost(repository: ProduceRepository, navController: NavHostController = rememberNavController()) {
-    val scope = rememberCoroutineScope()
-    
-    NavHost(navController = navController, startDestination = Routes.DASHBOARD) {
-        
+fun AppNavHost(
+    repository: ProduceRepository,
+    navController: NavHostController = rememberNavController()
+) {
+    val coroutineScope = rememberCoroutineScope()
+
+    NavHost(
+        navController = navController,
+        startDestination = Routes.DASHBOARD
+    ) {
+
+        // Dashboard
         composable(Routes.DASHBOARD) {
             DashboardScreen(
                 repository = repository,
-                onAddProduce = { navController.navigate(Routes.ADD_PRODUCE) },
-                onViewRecords = { navController.navigate(Routes.RECORDS) },
-                onViewMonitoring = { navController.navigate(Routes.MONITORING) }
+                onAddProduce = {
+                    navController.navigate(Routes.ADD_PRODUCE)
+                },
+                onViewRecords = {
+                    navController.navigate(Routes.RECORDS)
+                },
+                onViewMonitoring = {
+                    navController.navigate(Routes.MONITORING)
+                }
             )
         }
-        
+
+        // Add Produce
         composable(Routes.ADD_PRODUCE) {
-            AddProduceScreen(onSave = { cropName, quantity, unit, date, location, notes ->
-                scope.launch {
-                    repository.insert(Produce(cropName = cropName, quantity = quantity, remainingQuantity = quantity, unit = unit, harvestDate = System.currentTimeMillis(), storageLocation = location, notes = notes))
+            AddProduceScreen(
+                onSave = { cropName, quantity, unit, harvestDate, storageLocation, notes ->
+                    coroutineScope.launch {
+                        repository.insert(
+                            Produce(
+                                cropName = cropName,
+                                quantity = quantity,
+                                remainingQuantity = quantity,
+                                unit = unit,
+                                harvestDate = harvestDate,
+                                storageLocation = storageLocation,
+                                notes = notes
+                            )
+                        )
+
+                        navController.popBackStack()
+                    }
                 }
-                navController.popBackStack()
-            })
+            )
         }
-        
+
+        // Storage Records
         composable(Routes.RECORDS) {
             RecordsScreen(
                 repository = repository,
-                onBack = { navController.popBackStack() },
-                onItemClick = { id -> navController.navigate(Routes.details(id)) }
+                onBack = {
+                    navController.popBackStack()
+                },
+                onItemClick = { produceId ->
+                    navController.navigate(Routes.details(produceId))
+                }
             )
         }
-        
+
+        // Produce Details
         composable(
             route = Routes.DETAILS,
-            arguments = listOf(navArgument("produceId") { type = NavType.LongType })
-        ) { backStackEntry ->
-            ProduceDetailsScreen(
-                cropName = "Maize",
-                quantity = 100.0,
-                unit = "kg",
-                harvestDate = "08/11/2026",
-                storageLocation = "Store Room A",
-                notes = "Stored in a dry and cool place",
-                onBack = { navController.popBackStack() }
+            arguments = listOf(
+                navArgument("produceId") {
+                    type = NavType.LongType
+                }
             )
+        ) { backStackEntry ->
+
+            val produceId =
+                backStackEntry.arguments?.getLong("produceId") ?: 0L
+
+            val produce by repository.getById(produceId)
+                .collectAsState(initial = null)
+
+            if (produce != null) {
+                val item = produce!!
+
+                ProduceDetailsScreen(
+                    cropName = item.cropName,
+                    quantity = item.quantity,
+                    initialRemainingQuantity = item.remainingQuantity,
+                    unit = item.unit,
+                    harvestDate = SimpleDateFormat(
+                        "dd/MM/yyyy",
+                        Locale.getDefault()
+                    ).format(Date(item.harvestDate)),
+                    storageLocation = item.storageLocation,
+                    notes = item.notes,
+                    onBack = {
+                        navController.popBackStack()
+                    },
+                    onUpdateQuantity = { newRemainingQuantity, _ ->
+                        coroutineScope.launch {
+                            repository.update(
+                                item.copy(
+                                    remainingQuantity = newRemainingQuantity
+                                )
+                            )
+                        }
+                    }
+                )
+            } else {
+                Text("Loading produce details...")
+            }
         }
-        
+
+        // Storage Monitoring
         composable(Routes.MONITORING) {
             MonitoringScreen(
                 repository = repository,
-                onBack = { navController.popBackStack() }
+                onBack = {
+                    navController.popBackStack()
+                }
             )
         }
     }

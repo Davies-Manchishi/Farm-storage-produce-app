@@ -1,5 +1,6 @@
 package com.zut.farmstorage.ui.records
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -53,7 +54,7 @@ fun RecordsScreen(
         }
 
         if (produceList.isEmpty()) {
-            Text("No produce com.zut.farmstorage.ui.records yet. Add produce to see them here.")
+            Text("No produce records yet. Add produce to see them here.")
         } else {
             LazyColumn(
                 contentPadding = PaddingValues(vertical = 8.dp),
@@ -63,7 +64,12 @@ fun RecordsScreen(
                     items = produceList,
                     key = { it.produceId }
                 ) { produce ->
-                    ProduceRecordCard(produce)
+                    ProduceRecordCard(
+                        produce = produce,
+                        onClick = {
+                            onItemClick(produce.produceId)
+                        }
+                    )
                 }
             }
         }
@@ -71,14 +77,19 @@ fun RecordsScreen(
 }
 
 @Composable
-private fun ProduceRecordCard(produce: Produce) {
+private fun ProduceRecordCard(
+    produce: Produce,
+    onClick: () -> Unit
+) {
     val harvestDate = SimpleDateFormat(
         "dd MMM yyyy",
         Locale.getDefault()
     ).format(Date(produce.harvestDate))
 
     Card(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onClick() }
     ) {
         Column(
             modifier = Modifier.padding(16.dp)
