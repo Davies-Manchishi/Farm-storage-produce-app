@@ -200,11 +200,12 @@ The project demonstrates how mobile technology can be applied to address practic
 
 13. Project Team Members
 
-No.| Full Name| Student ID
-1| Tatenda Mungandaire| 2420986
-2| Tafadzwa Mungandaire| 2420974
-3| Davis Manchishi| 2410093
-4| David Chisenga| 2410384
-5| [Insert fifth member]| [Insert student ID]
+| No. | Full Name | Student ID |
+|-----|-----------|------------|
+| 1 | Tatenda Mungandaire | 2420986 |
+| 2 | Tafadzwa Mungandaire | 2420974 |
+| 3 | Davies Manchishi | 2410093 |
+| 4 | David Chisenga | 2410384 |
+
 
 End of Concept Note
