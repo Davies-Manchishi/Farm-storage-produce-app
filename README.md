@@ -205,7 +205,7 @@ The project demonstrates how mobile technology can be applied to address practic
 | 1 | Tatenda Mungandaire | 2420986 |
 | 2 | Tafadzwa Mungandaire | 2420974 |
 | 3 | Davies Manchishi | 2410093 |
-| 4 | David Chisenga | 2410384 |
+| 4 | David Chisenga | 2410348 |
 
 
 End of Concept Note
